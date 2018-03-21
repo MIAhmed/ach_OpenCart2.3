@@ -29,6 +29,8 @@ class ControllerExtensionPaymentAlphacommercehub extends Controller {
 		$data['text_sale'] = $this->language->get('text_sale');
 
 		$data['entry_email'] = $this->language->get('entry_email');
+$data['entry_user'] = $this->language->get('entry_user');
+		$data['entry_url'] = $this->language->get('entry_url');
 		$data['entry_test'] = $this->language->get('entry_test');
 		$data['entry_transaction'] = $this->language->get('entry_transaction');
 		$data['entry_debug'] = $this->language->get('entry_debug');
@@ -95,7 +97,16 @@ class ControllerExtensionPaymentAlphacommercehub extends Controller {
 		} else {
 			$data['alphacommercehub_email'] = $this->config->get('alphacommercehub_email');
 		}
-
+if (isset($this->request->post['alphacommercehub_user'])) {
+			$data['alphacommercehub_user'] = $this->request->post['alphacommercehub_user'];
+		} else {
+			$data['alphacommercehub_user'] = $this->config->get('alphacommercehub_user');
+		}
+		if (isset($this->request->post['alphacommercehub_url'])) {
+			$data['alphacommercehub_url'] = $this->request->post['alphacommercehub_url'];
+		} else {
+			$data['alphacommercehub_url'] = $this->config->get('alphacommercehub_url');
+		}
 		if (isset($this->request->post['alphacommercehub_test'])) {
 			$data['alphacommercehub_test'] = $this->request->post['alphacommercehub_test'];
 		} else {
