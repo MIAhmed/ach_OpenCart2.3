@@ -8,18 +8,19 @@ class ControllerExtensionPaymentPPAlphacommercehub extends Controller {
 
 		$data['testmode'] = $this->config->get('pp_alphacommercehub_test');
 
-		if (!$this->config->get('pp_alphacommercehub_test')) {
+		/*if (!$this->config->get('pp_alphacommercehub_test')) {
 			$data['action'] = 'https://www.paypal.com/cgi-bin/webscr';
 		} else {
 			$data['action'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
-		}
-
+		}*/
+$data['action'] = 'https://hubuat.alphacommercehub.com.au/'.$this->config->get('pp_alphacommercehub_url');
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
 
 		if ($order_info) {
 			$data['business'] = $this->config->get('pp_alphacommercehub_email');
+$data['merchant'] = $this->config->get('pp_alphacommercehub_merchant');
 			$data['item_name'] = html_entity_decode($this->config->get('config_name'), ENT_QUOTES, 'UTF-8');
 
 			$data['products'] = array();
@@ -59,6 +60,8 @@ class ControllerExtensionPaymentPPAlphacommercehub extends Controller {
 			$data['discount_amount_cart'] = 0;
 
 			$total = $this->currency->format($order_info['total'] - $this->cart->getSubTotal(), $order_info['currency_code'], false, false);
+$amount = $order_info['total'] * 1000;
+$data['Amount'] = round($amount);
 
 			if ($total > 0) {
 				$data['products'][] = array(
