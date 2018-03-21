@@ -29,6 +29,9 @@ class ControllerExtensionPaymentPPAlphacommercehub extends Controller {
 		$data['text_sale'] = $this->language->get('text_sale');
 
 		$data['entry_email'] = $this->language->get('entry_email');
+$data['entry_user'] = $this->language->get('entry_user');
+		$data['entry_url'] = $this->language->get('entry_url');
+		$data['entry_merchant'] = $this->language->get('entry_merchant');
 		$data['entry_test'] = $this->language->get('entry_test');
 		$data['entry_transaction'] = $this->language->get('entry_transaction');
 		$data['entry_debug'] = $this->language->get('entry_debug');
@@ -107,7 +110,21 @@ class ControllerExtensionPaymentPPAlphacommercehub extends Controller {
 		} else {
 			$data['pp_alphacommercehub_transaction'] = $this->config->get('pp_alphacommercehub_transaction');
 		}
-
+if (isset($this->request->post['pp_alphacommercehub_user'])) {
+			$data['pp_alphacommercehub_user'] = $this->request->post['pp_alphacommercehub_user'];
+		} else {
+			$data['pp_alphacommercehub_user'] = $this->config->get('pp_alphacommercehub_user');
+		}
+		if (isset($this->request->post['pp_alphacommercehub_url'])) {
+			$data['pp_alphacommercehub_url'] = $this->request->post['pp_alphacommercehub_url'];
+		} else {
+			$data['pp_alphacommercehub_url'] = $this->config->get('pp_alphacommercehub_url');
+		}
+		if (isset($this->request->post['pp_alphacommercehub_merchant'])) {
+			$data['pp_alphacommercehub_merchant'] = $this->request->post['pp_alphacommercehub_merchant'];
+		} else {
+			$data['pp_alphacommercehub_merchant'] = $this->config->get('pp_alphacommercehub_merchant');
+		}
 		if (isset($this->request->post['pp_alphacommercehub_debug'])) {
 			$data['pp_alphacommercehub_debug'] = $this->request->post['pp_alphacommercehub_debug'];
 		} else {
