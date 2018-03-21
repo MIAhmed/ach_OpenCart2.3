@@ -4,6 +4,8 @@
 <form action="<?php echo $action; ?>" method="post">
   <input type="hidden" name="cmd" value="_cart" />
   <input type="hidden" name="upload" value="1" />
+<input type="hidden" name="MerchantID" value="<?php echo $merchant; ?>" />
+  <input type="hidden" name="Amount" value="<?php echo $Amount; ?>" />
   <input type="hidden" name="business" value="<?php echo $business; ?>" />
   <?php $i = 1; ?>
   <?php foreach ($products as $product) { ?>
