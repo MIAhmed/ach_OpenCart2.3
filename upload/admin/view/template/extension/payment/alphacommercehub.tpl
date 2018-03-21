@@ -68,6 +68,20 @@
                   </select>
                 </div>
               </div>
+<div class="form-group">
+                <label class="col-sm-2 control-label" for="entry-url"><?php /* urmi 19-3-2018 */ echo $entry_url; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="alphacommercehub_url" value="<?php echo $alphacommercehub_url; ?>" placeholder="<?php echo $entry_url; ?>" id="entry-url" class="form-control"/>
+                
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="entry-user"><?php echo $entry_user; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="alphacommercehub_user" value="<?php echo $alphacommercehub_user; ?>" placeholder="<?php echo $entry_user; ?>" id="entry-user" class="form-control"/>
+                 
+                </div>
+              </div>
            <!--   <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-transaction"><?php echo $entry_transaction; ?></label>
                 <div class="col-sm-10">
