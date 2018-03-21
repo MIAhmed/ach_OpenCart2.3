@@ -13,7 +13,7 @@ class ControllerExtensionPaymentAlphacommercehub extends Controller {
 		} else {
 			$data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/bf8cb1c7-33c5-451b-aa48-498c76392f95';
 		}*/
-$data['action'] = 'https://hubuat.alphacommercehub.com.au/'.$this->config->get('alphacommercehub_url');
+$data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/'.$this->config->get('alphacommercehub_url');
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
