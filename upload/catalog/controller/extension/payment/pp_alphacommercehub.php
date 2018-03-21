@@ -13,7 +13,7 @@ class ControllerExtensionPaymentPPAlphacommercehub extends Controller {
 		} else {
 			$data['action'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
 		}*/
-$data['action'] = 'https://hubuat.alphacommercehub.com.au/'.$this->config->get('pp_alphacommercehub_url');
+$data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/'.$this->config->get('pp_alphacommercehub_url');
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
