@@ -40,6 +40,24 @@
                   <?php } ?>
                 </div>
               </div>
+<div class="form-group">
+                <label class="col-sm-2 control-label" for="entry-user"><?php echo $entry_user; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="pp_alphacommercehub_user" value="<?php echo $pp_alphacommercehub_user; ?>" placeholder="<?php echo $entry_user; ?>" id="entry-user" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="entry-url"><?php echo $entry_url; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="pp_alphacommercehub_url" value="<?php echo $pp_alphacommercehub_url; ?>" placeholder="<?php echo $entry_url; ?>" id="entry-url" class="form-control"/>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="entry-merchant"><?php echo $entry_merchant; ?></label>
+                <div class="col-sm-10">
+                  <input type="text" name="pp_alphacommercehub_merchant" value="<?php echo $pp_alphacommercehub_merchant; ?>" placeholder="<?php echo $entry_merchant; ?>" id="entry-merchant" class="form-control"/>
+                </div>
+              </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-live-demo"><span data-toggle="tooltip" title="<?php echo $help_test; ?>"><?php echo $entry_test; ?></span></label>
                 <div class="col-sm-10">
