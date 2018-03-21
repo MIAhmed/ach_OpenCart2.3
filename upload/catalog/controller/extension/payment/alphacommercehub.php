@@ -8,12 +8,12 @@ class ControllerExtensionPaymentAlphacommercehub extends Controller {
 
 		$data['testmode'] = $this->config->get('alphacommercehub_test');
 
-		if (!$this->config->get('alphacommercehub_test')) {
+		/*if (!$this->config->get('alphacommercehub_test')) {
 			$data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/bf8cb1c7-33c5-451b-aa48-498c76392f95';
 		} else {
 			$data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/bf8cb1c7-33c5-451b-aa48-498c76392f95';
-		}
-
+		}*/
+$data['action'] = 'https://hubuat.alphacommercehub.com.au/'.$this->config->get('alphacommercehub_url');
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
@@ -59,7 +59,8 @@ class ControllerExtensionPaymentAlphacommercehub extends Controller {
 			$data['discount_amount_cart'] = 0;
 
 			$total = $this->currency->format($order_info['total'] - $this->cart->getSubTotal(), $order_info['currency_code'], false, false);
-$data['Amount'] = round($order_info['total']);
+$amount = $order_info['total'] * 1000;
+$data['Amount'] = round($amount);
 
 	if ($this->config->get('alphacommercehub_debug') == 1){
 			$secureval = 'N';
