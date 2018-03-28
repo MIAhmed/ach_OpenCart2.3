@@ -119,12 +119,12 @@ $data['Amount'] = round($amount);
 	public function callback() {
 		$posteddata=json_decode($_POST['data']);
 		$order_id=$posteddata->Result->MerchantTxnID;
-		$order_id=$aa->Result->MerchantTxnID;
+		$order_id=$posteddata->Result->MerchantTxnID;
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($order_id);
 		if($order_info){
-		if($aa->MethodResult->Status == 0){
+		if($posteddata->MethodResult->Status == 0){
 $status='5';
 }
 else{
