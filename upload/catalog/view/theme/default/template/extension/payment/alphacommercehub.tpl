@@ -16,6 +16,7 @@
   <input type="hidden" name="OrderDetails[0].ItemAmount" value="<?php echo $Amount; ?>" />
   <input type="hidden" name="OrderDetails[0].ItemQuantity" value="<?php echo $pro_quantity; ?>" />
   <input type="hidden" name="SuccessURL" value="<?php echo $notify_url; ?>" />
+  <input type="hidden" name="CancelURL" value="<?php echo $cancel_return; ?>" />
   <div class="buttons">
     <div class="pull-right">
       <input type="submit" value="<?php echo $button_confirm; ?>" class="btn btn-primary" />
