@@ -111,103 +111,25 @@ $data['Amount'] = round($amount);
 	}
 
 	public function callback() {
-		if (isset($this->request->post['custom'])) {
-			$order_id = $this->request->post['custom'];
-		} else {
-			$order_id = 0;
-		}
-
+		$posteddata=json_decode($_POST['data']);
+		$order_id=$posteddata->Result->MerchantTxnID;
+		$order_id=$aa->Result->MerchantTxnID;
 		$this->load->model('checkout/order');
 
 		$order_info = $this->model_checkout_order->getOrder($order_id);
-
-		if ($order_info) {
-			$request = 'cmd=_notify-validate';
-
-			foreach ($this->request->post as $key => $value) {
-				$request .= '&' . $key . '=' . urlencode(html_entity_decode($value, ENT_QUOTES, 'UTF-8'));
-			}
-
-			if (!$this->config->get('alphacommercehub_test')) {
-				$curl = curl_init('https://hubuat.alphacommercehub.com.au/pp/bf8cb1c7-33c5-451b-aa48-498c76392f95');
-			} else {
-				$curl = curl_init('https://hubuat.alphacommercehub.com.au/pp/bf8cb1c7-33c5-451b-aa48-498c76392f95');
-			}
-
-			curl_setopt($curl, CURLOPT_POST, true);
-			curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
-			curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($curl, CURLOPT_HEADER, false);
-			curl_setopt($curl, CURLOPT_TIMEOUT, 30);
-			curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-
-			$response = curl_exec($curl);
-
-			if (!$response) {
-				$this->log->write('ALPHACOMMERCEHUB :: CURL failed ' . curl_error($curl) . '(' . curl_errno($curl) . ')');
-			}
-
-			if ($this->config->get('alphacommercehub_debug')) {
-				$this->log->write('ALPHACOMMERCEHUB :: IPN REQUEST: ' . $request);
-				$this->log->write('ALPHACOMMERCEHUB :: IPN RESPONSE: ' . $response);
-			}
-
-			if ((strcmp($response, 'VERIFIED') == 0 || strcmp($response, 'UNVERIFIED') == 0) && isset($this->request->post['payment_status'])) {
-				$order_status_id = $this->config->get('config_order_status_id');
-
-				switch($this->request->post['payment_status']) {
-					case 'Canceled_Reversal':
-						$order_status_id = $this->config->get('alphacommercehub_canceled_reversal_status_id');
-						break;
-					case 'Completed':
-						$receiver_match = (strtolower($this->request->post['receiver_email']) == strtolower($this->config->get('alphacommercehub_email')));
-
-						$total_paid_match = ((float)$this->request->post['mc_gross'] == $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false));
-
-						if ($receiver_match && $total_paid_match) {
-							$order_status_id = $this->config->get('alphacommercehub_completed_status_id');
-						}
-						
-						if (!$receiver_match) {
-							$this->log->write('ALPHACOMMERCEHUB :: RECEIVER EMAIL MISMATCH! ' . strtolower($this->request->post['receiver_email']));
-						}
-						
-						if (!$total_paid_match) {
-							$this->log->write('ALPHACOMMERCEHUB :: TOTAL PAID MISMATCH! ' . $this->request->post['mc_gross']);
-						}
-						break;
-					case 'Denied':
-						$order_status_id = $this->config->get('alphacommercehub_denied_status_id');
-						break;
-					case 'Expired':
-						$order_status_id = $this->config->get('alphacommercehub_expired_status_id');
-						break;
-					case 'Failed':
-						$order_status_id = $this->config->get('alphacommercehub_failed_status_id');
-						break;
-					case 'Pending':
-						$order_status_id = $this->config->get('alphacommercehub_pending_status_id');
-						break;
-					case 'Processed':
-						$order_status_id = $this->config->get('alphacommercehub_processed_status_id');
-						break;
-					case 'Refunded':
-						$order_status_id = $this->config->get('alphacommercehub_refunded_status_id');
-						break;
-					case 'Reversed':
-						$order_status_id = $this->config->get('alphacommercehub_reversed_status_id');
-						break;
-					case 'Voided':
-						$order_status_id = $this->config->get('alphacommercehub_voided_status_id');
-						break;
-				}
-
-				$this->model_checkout_order->addOrderHistory($order_id, $order_status_id);
-			} else {
-				$this->model_checkout_order->addOrderHistory($order_id, $this->config->get('config_order_status_id'));
-			}
-
-			curl_close($curl);
+		if($order_info){
+		if($aa->MethodResult->Status == 0){
+$status='5';
+}
+else{
+$status='7';
+}
+$this->model_checkout_order->addOrderHistory($order_id,$status);
+?>
+<script>
+window.location.href = "<?php echo $this->url->link('checkout/success', '', true); ?>";
+</script>
+<?php
 		}
 	}
 }
