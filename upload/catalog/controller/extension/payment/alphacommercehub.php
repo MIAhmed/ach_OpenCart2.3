@@ -9,7 +9,12 @@ class ControllerExtensionPaymentAlphacommercehub extends Controller {
 		$data['testmode'] = $this->config->get('alphacommercehub_test');
 
 		
+/*$data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/'.$this->config->get('alphacommercehub_url');*/
+		if($this->config->get('alphacommercehub_mode') == 'UAT'){
 $data['action'] = 'https://hubuat.alphacommercehub.com.au/pp/'.$this->config->get('alphacommercehub_url');
+}else{
+$data['action'] = 'https://hub.alphacommercehub.com.au/pp/'.$this->config->get('alphacommercehub_url');
+} 
 		$this->load->model('checkout/order');
 $data['user'] = $this->config->get('alphacommercehub_user');
 		$order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
