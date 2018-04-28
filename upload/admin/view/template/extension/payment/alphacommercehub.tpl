@@ -134,6 +134,20 @@
                   </select>
                 </div>
               </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_mode; ?></label>
+                <div class="col-sm-10">
+                  <select name="alphacommercehub_mode" id="input-status" class="form-control">
+                    <?php if ($alphacommercehub_mode) { ?>
+                    <option value="1" selected="selected"><?php echo 'UAT'; ?></option>
+                    <option value="0"><?php echo 'Production'; ?></option>
+                    <?php } else { ?>
+                    <option value="1"><?php echo 'UAT'; ?></option>
+                    <option value="0" selected="selected"><?php echo 'Production'; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
              <!-- <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
                 <div class="col-sm-10">
