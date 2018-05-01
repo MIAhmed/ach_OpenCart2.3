@@ -69,8 +69,8 @@ $data['pro_quantity']=$pro_quantity;
 			$data['discount_amount_cart'] = 0;
 
 			$total = $this->currency->format($order_info['total'] - $this->cart->getSubTotal(), $order_info['currency_code'], false, false);
-$amount = $order_info['total'] * 1000;
-$data['Amount'] = round($amount);
+$amount = round($order_info['total']) * 1000;
+$data['Amount'] = $amount;
 
 	if ($this->config->get('alphacommercehub_debug') == 1){
 			$secureval = 'N';
