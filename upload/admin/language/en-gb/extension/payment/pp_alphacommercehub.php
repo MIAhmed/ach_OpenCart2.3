@@ -31,6 +31,7 @@ $_['entry_reversed_status']			 = 'Reversed Status';
 $_['entry_voided_status']			 = 'Voided Status';
 $_['entry_geo_zone']				 = 'Geo Zone';
 $_['entry_status']					 = 'Status';
+$_['entry_mode']					 = 'Mode';
 $_['entry_sort_order']				 = 'Sort Order';
 
 // Tab
