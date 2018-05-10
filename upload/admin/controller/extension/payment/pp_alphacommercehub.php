@@ -48,6 +48,7 @@ $data['entry_user'] = $this->language->get('entry_user');
 		$data['entry_voided_status'] = $this->language->get('entry_voided_status');
 		$data['entry_geo_zone'] = $this->language->get('entry_geo_zone');
 		$data['entry_status'] = $this->language->get('entry_status');
+		$data['entry_mode'] = $this->language->get('entry_mode');
 		$data['entry_sort_order'] = $this->language->get('entry_sort_order');
 
 		$data['help_test'] = $this->language->get('help_test');
@@ -216,6 +217,12 @@ if (isset($this->request->post['pp_alphacommercehub_user'])) {
 		} else {
 			$data['pp_alphacommercehub_status'] = $this->config->get('pp_alphacommercehub_status');
 		}
+if (isset($this->request->post['pp_alphacommercehub_mode'])) {
+			$data['pp_alphacommercehub_mode'] = $this->request->post['pp_alphacommercehub_mode'];
+		} else {
+			$data['pp_alphacommercehub_mode'] = $this->config->get('pp_alphacommercehub_mode');
+		}
+
 
 		if (isset($this->request->post['pp_alphacommercehub_sort_order'])) {
 			$data['pp_alphacommercehub_sort_order'] = $this->request->post['pp_alphacommercehub_sort_order'];
