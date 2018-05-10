@@ -25,7 +25,7 @@
       </div>
       <div class="panel-body">
         <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data" id="form-pp-std-uk" class="form-horizontal">
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs" style="display:none;">
             <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
             <li><a href="#tab-status" data-toggle="tab"><?php echo $tab_order_status; ?></a></li>
           </ul>
@@ -58,7 +58,7 @@
                   <input type="text" name="pp_alphacommercehub_merchant" value="<?php echo $pp_alphacommercehub_merchant; ?>" placeholder="<?php echo $entry_merchant; ?>" id="entry-merchant" class="form-control"/>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 control-label" for="input-live-demo"><span data-toggle="tooltip" title="<?php echo $help_test; ?>"><?php echo $entry_test; ?></span></label>
                 <div class="col-sm-10">
                   <select name="pp_alphacommercehub_test" id="input-live-demo" class="form-control">
@@ -72,7 +72,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 control-label" for="input-debug"><span data-toggle="tooltip" title="<?php echo $help_debug; ?>"><?php echo $entry_debug; ?></span></label>
                 <div class="col-sm-10">
                   <select name="pp_alphacommercehub_debug" id="input-debug" class="form-control">
@@ -86,7 +86,7 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 control-label" for="input-transaction"><?php echo $entry_transaction; ?></label>
                 <div class="col-sm-10">
                   <select name="pp_alphacommercehub_transaction" id="input-transaction" class="form-control">
@@ -103,13 +103,13 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 control-label" for="input-total"><span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?></span></label>
                 <div class="col-sm-10">
                   <input type="text" name="pp_alphacommercehub_total" value="<?php echo $pp_alphacommercehub_total; ?>" placeholder="<?php echo $entry_total; ?>" id="input-total" class="form-control"/>
                 </div>
               </div>
-              <div class="form-group">
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 control-label" for="input-geo-zone"><?php echo $entry_geo_zone; ?></label>
                 <div class="col-sm-10">
                   <select name="pp_alphacommercehub_geo_zone_id" id="input-geo-zone" class="form-control">
@@ -138,7 +138,22 @@
                   </select>
                 </div>
               </div>
-              <div class="form-group">
+<div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status"><?php echo $entry_mode; ?></label>
+                <div class="col-sm-10">
+                  <select name="pp_alphacommercehub_mode" id="input-mode" class="form-control">
+                    <?php if ($pp_alphacommercehub_mode) { ?>
+                    <option value="1" selected="selected"><?php echo 'UAT'; ?></option>
+                    <option value="0"><?php echo 'Production'; ?></option>
+                    <?php } else { ?>
+                    <option value="1"><?php echo 'UAT'; ?></option>
+                    <option value="0" selected="selected"><?php echo 'Production'; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group" style="display:none;">
                 <label class="col-sm-2 control-label" for="input-sort-order"><?php echo $entry_sort_order; ?></label>
                 <div class="col-sm-10">
                   <input type="text" name="pp_alphacommercehub_sort_order" value="<?php echo $pp_alphacommercehub_sort_order; ?>" placeholder="<?php echo $entry_sort_order; ?>" id="input-sort-order" class="form-control"/>
