@@ -1,5 +1,5 @@
 <?php
 // Text
-$_['text_title']	= 'Alphacommecrehub PayPal';
+$_['text_title']	= 'PayPal Alpha Commerce Hub';
 $_['text_testmode']	= 'Warning: The payment gateway is in \'Sandbox Mode\'. Your account will not be charged.';
 $_['text_total']	= 'Shipping, Handling, Discounts & Taxes';
