@@ -7,7 +7,7 @@
 <input type="hidden" name="MerchantID" value="<?php echo $merchant; ?>" />
   <input type="hidden" name="Amount" value="<?php echo $Amount; ?>" />
   <input type="hidden" name="business" value="<?php echo $business; ?>" />
-  <input type="hidden" name="Country" value="'AUSTRALIA">
+  <input type="hidden" name="Country" value="AUSTRALIA">
   <input type="hidden" name="Currency" value="AUD">
   <input type="hidden" name="MerchantTxnID" value="<?php echo $merchanttxnid; ?>">
   <input type="hidden" name="UserId" value="<?php echo $user; ?>" />

@@ -56,21 +56,27 @@ $data['user'] = $this->config->get('alphacommercehub_user');
 					'weight'   => $product['weight']
 				);
 			}
+
 			foreach($data['products'] as $pro){
-	$pro_name1[]=$pro['name'];
-	$pro_quantity1[]=$pro['quantity'];
-	}
- $pro_quantity=array_sum($pro_quantity1);
- $pro_name=str_replace(" ","",$pro_name1);
- $data['pro_name']=$pro_name[0];
-$data['pro_quantity']=$pro_quantity;
-			
+				$pro_name1[]=$pro['name'];
+				$pro_quantity1[]=$pro['quantity'];
+				$pro_price1[]=$pro['price'];
+			}
+
+			$pro_quantity=array_sum($pro_quantity1);
+			$pro_name=str_replace(" ","",$pro_name1);
+			$data['pro_name']=$pro_name[0];
+			$data['pro_quantity']=$pro_quantity;
+			$data['pro_price']=$pro_price1[0];
+
+			if( $data['pro_price'] !=null)
+				$data['pro_price'] = $data['pro_price'] * 1000; 	
 
 			$data['discount_amount_cart'] = 0;
 
 			$total = $this->currency->format($order_info['total'] - $this->cart->getSubTotal(), $order_info['currency_code'], false, false);
-$amount = round($order_info['total']) * 1000;
-$data['Amount'] = $amount;
+			$amount = round($order_info['total']) * 1000;
+			$data['Amount'] = $amount;
 
 	if ($this->config->get('alphacommercehub_debug') == 1){
 			$secureval = 'N';
